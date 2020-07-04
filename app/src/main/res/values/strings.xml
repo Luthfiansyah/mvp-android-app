@@ -1,12 +1,19 @@
 <resources>
-    <string name="app_name">MaterialLoginPage</string>
+    <string name="app_name">Jalanesia</string>
     <string name="top_icon">TOP ICON</string>
     <string name="email">Email</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="otp">OTP Code</string>
+    <string name="resend_otp">Resend OTP Code</string>
     <string name="login">LOGIN</string>
+    <string name="send">SEND</string>
+    <string name="confirm">CONFIRM</string>
     <string name="forgot_password">FORGOT PASSWORD?</string>
     <string name="or">OR</string>
     <string name="google_icon">google icon</string>
     <string name="facebook_icon">facebook icon</string>
+    <string name="user_login">Enter your registered phone number or email to login</string>
     <string name="new_user_register_now">New User? Register Now</string>
+    <string name="tos">By logging or registering, I agree to our Term Of Service and Privacy Policy.</string>
 </resources>
