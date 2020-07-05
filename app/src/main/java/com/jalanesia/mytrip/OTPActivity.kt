@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import com.jalanesia.mytrip.data.auth.LoginRequest
 import com.jalanesia.mytrip.data.auth.LoginResponse
@@ -21,6 +22,9 @@ class OTPActivity : AppCompatActivity() {
 
         val usernameValue=intent.getStringExtra("username")
         val passwordValue=intent.getStringExtra("password")
+        val phoneText: TextView = findViewById(R.id.phoneText) as TextView
+
+        phoneText.text = usernameValue
 
         var sessionManager = SessionManager(this)
         btnLogin.setOnClickListener() {
