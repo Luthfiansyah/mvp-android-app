@@ -43,7 +43,7 @@ interface ApiServices {
     fun getUsers(): Call<List<UserItem>>
 
     @POST("/v1/auth/otp")
-    fun authOTP(@Body request: OTPRequest): Call<GeneralResponse>
+    fun authOTP(@Body request: OTPRequest): Call<LoginResponse>
 
     @POST("/v1/auth/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>

@@ -1,9 +1,11 @@
 package com.jalanesia.mytrip
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.jalanesia.mytrip.data.auth.LoginResponse
 import com.jalanesia.mytrip.data.auth.OTPRequest
 import com.jalanesia.mytrip.data.common.GeneralResponse
 import com.jalanesia.mytrip.service.NetworkConfig
@@ -18,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var sessionManager = SessionManager(this)
+        // var sessionManager = SessionManager(this)
 
         btnLogin.setOnClickListener() {
             val usernameValue: String = inputUsername.text.toString()
@@ -35,23 +37,22 @@ class LoginActivity : AppCompatActivity() {
 
             NetworkConfig().getService()
             .authOTP(OTPRequest(username = usernameValue, password = passwordValue))
-            .enqueue(object : Callback<GeneralResponse> {
-                override fun onFailure(call: Call<GeneralResponse>, t: Throwable) {
+            .enqueue(object : Callback<LoginResponse> {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Toast.makeText(this@LoginActivity, "Communication Error, please try again", Toast.LENGTH_LONG).show()
                 }
 
-                override fun onResponse(
-                    call: Call<GeneralResponse>,
-                    response: Response<GeneralResponse>
-                ) {
-                    val loginResponse = response.body()
-
-                    if (response.code() == 200 && loginResponse?.responseStatus == true) {
-                        // sessionManager.saveAuthToken(loginResponse.authToken)
-                        Log.e("###", "OK${response.body()?.responseMessage}")
-                    } else {
-                        Log.e("###", "x${response.body()?.responseMessage}")
-                        Toast.makeText(this@LoginActivity, loginResponse?.responseMessage.toString() , Toast.LENGTH_LONG).show()
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    //Tulis code jika response sukses
+                    if(response.code() == 200) {
+                        if (response.body()?.generalResponse?.responseStatus == true) {
+                            val intent = Intent(this@LoginActivity,OTPActivity::class.java)
+                            intent.putExtra("username",usernameValue)
+                            intent.putExtra("password",passwordValue)
+                            startActivity(intent)
+                        }
+                    }else {
+                        Toast.makeText( this@LoginActivity, response.body()?.generalResponse?.responseMessage.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
             })
