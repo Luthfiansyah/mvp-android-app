@@ -49,6 +49,8 @@ class OTPActivity : AppCompatActivity() {
                             sessionManager.saveAuthToken(response.body()?.authResult?.token.toString())
                             val intent = Intent(this@OTPActivity,MainActivity::class.java)
                             startActivity(intent)
+                        }else {
+                            Toast.makeText( this@OTPActivity, response.body()?.generalResponse?.responseMessage.toString(), Toast.LENGTH_LONG).show()
                         }
                     } else {
                         Log.e("###", "x${response.body()?.generalResponse?.responseMessage}")

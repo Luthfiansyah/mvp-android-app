@@ -1,9 +1,7 @@
 package com.jalanesia.mytrip.service
 
 import com.jalanesia.mytrip.Constants
-import com.jalanesia.mytrip.data.auth.LoginRequest
-import com.jalanesia.mytrip.data.auth.LoginResponse
-import com.jalanesia.mytrip.data.auth.OTPRequest
+import com.jalanesia.mytrip.data.auth.*
 import com.jalanesia.mytrip.data.common.GeneralResponse
 import com.jalanesia.mytrip.data.user.UserItem
 import okhttp3.OkHttpClient
@@ -47,4 +45,7 @@ interface ApiServices {
 
     @POST("/v1/auth/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
+
+    @POST("/v1/user/register")
+    fun register(@Body request: RegisterRequest): Call<RegisterResponse>
 }

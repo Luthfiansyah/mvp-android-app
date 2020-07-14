@@ -43,19 +43,28 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    //Tulis code jika response sukses
                     if(response.code() == 200) {
                         if (response.body()?.generalResponse?.responseStatus == true) {
                             val intent = Intent(this@LoginActivity,OTPActivity::class.java)
                             intent.putExtra("username",usernameValue)
                             intent.putExtra("password",passwordValue)
                             startActivity(intent)
+                            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left)
+                        }else {
+                            Toast.makeText( this@LoginActivity, response.body()?.generalResponse?.responseMessage.toString(), Toast.LENGTH_LONG).show()
                         }
                     }else {
                         Toast.makeText( this@LoginActivity, response.body()?.generalResponse?.responseMessage.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
             })
+        }
+
+        // GO TO REGISTER
+        textRegisterLink.setOnClickListener(){
+            val intent = Intent(this@LoginActivity,RegisterActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right)
         }
     }
 }
