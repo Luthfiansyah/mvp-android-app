@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
             val passwordValue: String = inputPassword.text.toString()
 
             if (fullNameValue.trim() == "") {
-                Toast.makeText(this, "please input your username", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "please input your full name", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 

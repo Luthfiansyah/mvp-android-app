@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Jalanesia</string>
     <string name="top_icon">TOP ICON</string>
-    <string name="full_name">Fullname</string>
+    <string name="full_name">Full Name</string>
     <string name="phone">Phone</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
