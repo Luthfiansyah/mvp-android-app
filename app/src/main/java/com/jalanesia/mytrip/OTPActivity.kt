@@ -8,8 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.jalanesia.mytrip.data.auth.LoginRequest
 import com.jalanesia.mytrip.data.auth.LoginResponse
-import com.jalanesia.mytrip.data.common.GeneralResponse
 import com.jalanesia.mytrip.service.NetworkConfig
+import com.jalanesia.mytrip.utils.Auth
 import kotlinx.android.synthetic.main.activity_otp.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,13 +20,18 @@ class OTPActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
 
+        // CHECK USER IS LOGIN
+        var auth = Auth()
+        if (auth.isLogin(this)){
+            setContentView(R.layout.activity_main)
+        }
+
         val usernameValue=intent.getStringExtra("username")
         val passwordValue=intent.getStringExtra("password")
         val phoneText: TextView = findViewById(R.id.phoneText) as TextView
 
         phoneText.text = usernameValue
 
-        var sessionManager = SessionManager(this)
         btnLogin.setOnClickListener() {
             val otpCodeValue: String = inputOTPCode.text.toString()
 
@@ -46,14 +51,14 @@ class OTPActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     if(response.code() == 200) {
                         if (response.body()?.generalResponse?.responseStatus == true) {
-                            sessionManager.saveAuthToken(response.body()?.authResult?.token.toString())
+                            var auth = Auth()
+                            auth.setSession(this@OTPActivity, response.body()?.authResult?.token.toString())
                             val intent = Intent(this@OTPActivity,MainActivity::class.java)
                             startActivity(intent)
                         }else {
                             Toast.makeText( this@OTPActivity, response.body()?.generalResponse?.responseMessage.toString(), Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        Log.e("###", "x${response.body()?.generalResponse?.responseMessage}")
                         Toast.makeText(this@OTPActivity, response.body()?.generalResponse?.responseMessage, Toast.LENGTH_LONG).show()
                     }
                 }
