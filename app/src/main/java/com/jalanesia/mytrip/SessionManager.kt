@@ -29,7 +29,7 @@ class SessionManager(context: Context) {
     /**
      * Function to remove auth token
      */
-    fun destroyAuthToken(token: String) {
+    fun destroyAuthToken() {
         val editor = prefs.edit()
         editor.remove(USER_TOKEN)
         editor.apply()

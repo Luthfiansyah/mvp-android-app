@@ -25,7 +25,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view: View
         val auth = Auth()
 
 //        if (!context?.let { auth.isLogin(it) }!!) {
@@ -36,9 +35,9 @@ class ProfileFragment : Fragment() {
 //            Log.d("MASUK",  context?.let { auth.isLogin(it) }.toString()!!)
 //        }
 
-        view = inflater!!.inflate(R.layout.fragment_profile, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        view.btn_logout.setOnClickListener { view ->
+        view.btn_logout.setOnClickListener {
 
             try {
                 // REMOVE SESSION

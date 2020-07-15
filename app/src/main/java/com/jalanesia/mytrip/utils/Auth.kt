@@ -24,6 +24,6 @@ class Auth {
 
     fun deleteSession(context: Context){
         var sessionManager = SessionManager(context)
-        sessionManager.destroyAuthToken(sessionManager.fetchAuthToken().toString())
+        sessionManager.destroyAuthToken()
     }
 }
