@@ -1,12 +1,15 @@
 package com.jalanesia.mytrip
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.jalanesia.mytrip.utils.Auth
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,14 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        var auth = Auth()
-        if (!auth.isLogin(this)){
-            val intent = Intent(this@MainActivity,LoginActivity::class.java)
-            startActivity(intent)
-        }else {
-            setContentView(R.layout.activity_main)
-        }
+        val auth = Auth()
 
 //        NetworkConfig().getService()
 //        .getUsers()
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 //        })
 
         // init views
-
         mViewPager = findViewById(R.id.mViewPager)
         homeBtn = findViewById(R.id.homeBtn)
         addBtn = findViewById(R.id.addBtn)
@@ -56,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         notiBtn = findViewById(R.id.notiBtn)
 
 
-        //onclick listner
+        //onclick listener
         homeBtn.setOnClickListener {
             mViewPager.currentItem = 0
         }
@@ -74,12 +71,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         profileBtn.setOnClickListener {
-            mViewPager.currentItem = 4
+            if (!auth.isLogin(this)) {
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+            } else {
+                mViewPager.currentItem = 4
+            }
         }
-
-        mPagerViewAdapter = PagerViewAdapter(supportFragmentManager)
-        mViewPager.adapter = mPagerViewAdapter
-        mViewPager.offscreenPageLimit = 5
 
         mViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -87,14 +85,23 @@ class MainActivity : AppCompatActivity() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
+                if (!auth.isLogin(this@MainActivity) && position == 4) {
+                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
 
             override fun onPageSelected(position: Int) {
                 changeTabs(position)
             }
 
-            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrollStateChanged(state: Int) {
+            }
         })
+
+        mPagerViewAdapter = PagerViewAdapter(supportFragmentManager)
+        mViewPager.adapter = mPagerViewAdapter
+        mViewPager.offscreenPageLimit = 5
 
         mViewPager.currentItem = 0
         homeBtn.setImageResource(R.drawable.ic_home_pink)
@@ -142,5 +149,11 @@ class MainActivity : AppCompatActivity() {
             notiBtn.setImageResource(R.drawable.ic_notifications_blck)
             profileBtn.setImageResource(R.drawable.ic_person_pink_fill)
         }
+    }
+
+    override fun onBackPressed() {
+        // super.onBackPressed();
+        // Toast.makeText(this@MainActivity, "There is no back action", Toast.LENGTH_LONG).show()
+        return
     }
 }

@@ -3,7 +3,6 @@ package com.jalanesia.mytrip.utils
 import android.content.Context
 import android.util.Log
 import com.jalanesia.mytrip.SessionManager
-import com.jalanesia.mytrip.data.auth.LoginResponse
 
 class Auth {
 
@@ -21,5 +20,10 @@ class Auth {
     fun setSession(context: Context, token: String){
         var sessionManager = SessionManager(context)
         sessionManager.saveAuthToken(token)
+    }
+
+    fun deleteSession(context: Context){
+        var sessionManager = SessionManager(context)
+        sessionManager.destroyAuthToken(sessionManager.fetchAuthToken().toString())
     }
 }

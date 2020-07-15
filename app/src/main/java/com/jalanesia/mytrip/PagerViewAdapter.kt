@@ -23,7 +23,7 @@ internal class PagerViewAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!
             4 -> {
                 ProfileFragment()
             }
-            else ->  Fragment()
+            else -> HomeFragment()
         }
     }
 

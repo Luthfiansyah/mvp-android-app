@@ -1,13 +1,15 @@
 package com.jalanesia.mytrip
 
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.jalanesia.mytrip.data.auth.LoginResponse
 import com.jalanesia.mytrip.data.auth.OTPRequest
-import com.jalanesia.mytrip.data.common.GeneralResponse
 import com.jalanesia.mytrip.service.NetworkConfig
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -21,6 +23,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // var sessionManager = SessionManager(this)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.title = "Skip for now";
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_backward_24dp);
 
         btnLogin.setOnClickListener() {
             val usernameValue: String = inputUsername.text.toString()

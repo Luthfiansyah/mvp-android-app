@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Jalanesia</string>
     <string name="top_icon">TOP ICON</string>
     <string name="full_name">Full Name</string>
@@ -26,4 +26,17 @@
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
     <string name="search">Search</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="faq">FAQ</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="change_password">Change Password</string>
+    <string name="myPhone">+6285811144669</string>
+    <string name="myName">Moh Reza Luthfiansyah</string>
+    <string name="photoProfile">photo profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="_18">18</string>
+    <string name="_125">125</string>
+    <string name="browse">Browse</string>
 </resources>
