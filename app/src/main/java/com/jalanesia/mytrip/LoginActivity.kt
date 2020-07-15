@@ -25,11 +25,11 @@ class LoginActivity : AppCompatActivity() {
         // var sessionManager = SessionManager(this)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
-        supportActionBar?.title = "Skip for now";
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = "Skip for now"
 
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_backward_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_backward_24dp)
 
         btnLogin.setOnClickListener() {
             val usernameValue: String = inputUsername.text.toString()
@@ -75,5 +75,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right)
         }
+    }
+
+    override fun onBackPressed() {
+        // super.onBackPressed();
+        // Toast.makeText(this@MainActivity, "There is no back action", Toast.LENGTH_LONG).show()
+        val intent = Intent(this@LoginActivity,MainActivity::class.java)
+        startActivity(intent)
+        return
     }
 }
