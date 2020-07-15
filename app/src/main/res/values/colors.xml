@@ -8,4 +8,10 @@
     <color name="greyDark">#666666</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="green">#7525D366</color>
+    <color name="yellow">#75FFD337</color>
+    <color name="violet">#75082DEF</color>
+    <color name="skyBlue">#7508EFE1</color>
+    <color name="red">#75CC0000</color>
+    <color name="turQ">#75FF5722</color>
 </resources>

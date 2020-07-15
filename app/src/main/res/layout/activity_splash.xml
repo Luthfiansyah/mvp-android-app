@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:id="@+id/background"
@@ -17,29 +17,29 @@
 
         <!-- Don't worry about the id names I have named the id's with reference to the file name for consistency -->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="250dp"-->
-<!--            android:src="@drawable/ic_travel"-->
-<!--            app:srcCompat="@android:drawable/sym_def_app_icon" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="250dp"-->
+        <!--            android:src="@drawable/ic_travel"-->
+        <!--            app:srcCompat="@android:drawable/sym_def_app_icon" />-->
 
         <TextView
             android:id="@+id/tagLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="250dp"
+            android:fontFamily="@font/open_sans_extra_bold"
             android:gravity="center"
             android:padding="30dp"
+            android:shadowColor="#000"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="15"
             android:text="@string/user_register"
             android:textColor="@color/white"
-            android:textSize="30dp"
-            android:shadowColor = "#000"
-            android:shadowRadius = "15"
-            android:shadowDx = "-2"
-            android:shadowDy = "-2"
-            android:fontFamily="@font/open_sans_extra_bold" />
+            android:textSize="30dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -48,28 +48,45 @@
             android:layout_below="@id/tagLine"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:shadowColor = "#000"
-            android:shadowRadius = "15"
-            android:indeterminateTint="@color/colorPrimary" />
+            android:indeterminateTint="@color/colorPrimary"
+            android:shadowColor="#000"
+            android:shadowRadius="15" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/progressBar"
-            android:layout_marginTop="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="@font/open_sans_regular"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="0dp"
+            android:shadowColor="#000"
+            android:shadowDx="+2"
+            android:shadowDy="+2"
+            android:shadowRadius="25"
             android:text="Powered by Jalanesia"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15dp"
-            android:shadowColor = "#000"
-            android:shadowRadius = "25"
-            android:shadowDx = "+2"
-            android:shadowDy = "+2"
-            android:fontFamily="@font/open_sans_regular"/>
-
+            android:textSize="15dp" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
