@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.jalanesia.mytrip.fragments.*
 
+@Suppress("DEPRECATION")
 internal class PagerViewAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -33,4 +34,3 @@ internal class PagerViewAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!
     }
 
 }
-
